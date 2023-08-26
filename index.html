@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Cairo:wght@700&family=Inter:wght@400;700;800&family=Jomhuria&family=Josefin+Sans:wght@400;700&family=Kumbh+Sans:wght@400;700&family=Lexend+Deca&family=Libre+Franklin:wght@300;600;700&family=Manrope:wght@800&family=Overpass:wght@400;700&family=Poppins:ital,wght@0,700;1,400;1,800&family=Roboto:wght@400;700&family=Work+Sans:wght@100;300;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Todo app</title>
+  </head>
+  <body>
+    <!-- Todo -->
+
+    <div class="container">
+      <img src="" alt="" />
+      <form action="">
+        <div class="title">
+          <h1>Todo</h1>
+          <img src="images/icon-sun.svg" id="icon-sun" alt="Image not found" />
+        </div>
+        <!-- <div class="hii"> -->
+        <!-- <span class="hii1"></span> -->
+        <div class="container-input">
+          <!-- <div class="inp"> -->
+          <input
+            type="text"
+            name="text"
+            id="text"
+            placeholder="Create a new todo"
+          />
+          <!-- </div> -->
+        </div>
+        <!-- </div> -->
+      </form>
+
+      <div class="parent-todo">
+        <!-- <div class="container-todo"><span class="inp"></span></div> -->
+      </div>
+      <div class="control-todo-container">
+        <div class="items"><span id="item-number">0</span> items left</div>
+        <div class="filter-todo">
+          <label>
+            <input type="radio" name="filter" id="all" value="All" checked />
+            <span>All</span>
+          </label>
+          <label
+            ><input type="radio" name="filter" id="active" value="Active" />
+            <span>Active</span>
+          </label>
+          <label
+            ><input
+              type="radio"
+              name="filter"
+              id="completed"
+              value="Completed"
+            />
+            <span>Completed</span>
+          </label>
+        </div>
+        <div class="clear-completed">Clear Completed</div>
+      </div>
+
+      <p>Drag and drop to reorder list</p>
+    </div>
+
+    <!-- Add dynamic number -->
+    <!-- items left All Active Completed Clear Completed Drag and drop to reorder
+    list -->
+    <script defer src="script.js"></script>
+  </body>
+</html>
