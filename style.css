@@ -18,6 +18,7 @@ body {
   background-color: var(--Very-Dark-Blue);
   background-image: url("images/bg-desktop-dark.jpg");
   background-repeat: no-repeat;
+  background-size: contain;
   display: flex;
   justify-content: center;
   font-size: 18px;
@@ -45,6 +46,14 @@ form {
   color: var(--Very-Light-Gray);
 }
 
+.parent-todo {
+  width: 100%;
+}
+.parent-todo p {
+  color: var(--Light-Grayish-Blue);
+  font-size: inherit;
+}
+
 .container-todo,
 .container-input {
   position: relative;
@@ -57,48 +66,14 @@ form {
   display: flex;
   align-items: center;
 }
-.container-todo {
-  border-bottom: 1px solid hsl(233, 14%, 35%);
-  justify-content: space-between;
-  padding-right: 20px;
+.container-input {
+  padding-left: 50px;
 }
-#cross {
-  visibility: hidden;
-}
-
-.container-todo:hover::after {
-  cursor: pointer;
-  border-top: 0.5px solid hsl(192, 100%, 67%);
-  border-left: 0.5px solid hsl(192, 100%, 67%);
-  border-right: 0.5px solid hsl(280, 87%, 65%);
-  border-bottom: 0.5px solid hsl(280, 87%, 65%);
-}
-
-.container-todo:hover #cross {
-  visibility: visible;
-}
-
-.container-todo::after {
-  content: "";
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  border: 1px solid var(--Very-Dark-Grayish-Blue);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-/* .container-todo {
-  pointer-events: none;
-} */
-/* .container-todo::after {
-  pointer-events: all;
-} */
 
 .container-input::after {
   content: "";
   position: absolute;
-  left: 20px;
+  left: 30px;
   top: 20px;
   border: 1px solid var(--Very-Dark-Grayish-Blue);
   width: 20px;
@@ -117,6 +92,57 @@ input[type="text"] {
   color: hsl(234, 39%, 85%);
   font-size: inherit;
 }
+
+input[type="checkbox"]:hover {
+  background-color: red;
+}
+
+.container-todo {
+  border-bottom: 1px solid hsl(233, 14%, 35%);
+  justify-content: space-between;
+  /* align-items: center; */
+  padding-right: 20px;
+}
+.container-todo div {
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  display: none;
+  /* border: 1px solid hsl(234, 11%, 52%);
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer; */
+}
+
+.check {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--Very-Dark-Grayish-Blue);
+  cursor: pointer;
+}
+
+input[type="checkbox"]:hover ~ .check {
+  cursor: pointer;
+  border-top: 0.5px solid hsl(192, 100%, 67%);
+  border-left: 0.5px solid hsl(192, 100%, 67%);
+  border-right: 0.5px solid hsl(280, 87%, 65%);
+  border-bottom: 0.5px solid hsl(280, 87%, 65%);
+}
+
+input[type="checkbox"]:checked ~ .check {
+  background: url("images/icon-check.svg"),
+    linear-gradient(0.4turn, hsl(192, 100%, 67%), hsl(280, 87%, 60%));
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
 .inp {
   padding-left: 30px;
   color: hsl(234, 39%, 85%);
@@ -126,12 +152,11 @@ input[type="text"] {
   cursor: pointer;
 }
 
-.parent-todo {
-  width: 100%;
+#cross {
+  visibility: hidden;
 }
-.parent-todo p {
-  color: var(--Light-Grayish-Blue);
-  font-size: inherit;
+.container-todo:hover #cross {
+  visibility: visible;
 }
 
 .control-todo-container {
@@ -153,18 +178,28 @@ input[type="text"] {
   font-size: 16px;
 }
 
-input[type="radio"] {
-  visibility: hidden;
-}
-
-label:hover {
+.filter-todo label:hover {
   cursor: pointer;
   color: hsl(234, 39%, 85%);
+}
+
+input[type="radio"] {
+  visibility: hidden;
 }
 
 input[type="radio"]:checked + span {
   color: hsl(220, 98%, 61%);
 }
+
+.clear-completed {
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  color: hsl(233, 14%, 35%);
+  border: none;
+}
+
+/* .clear-completed:hover {
+  background-color: 0;
+} */
 
 .clear-completed:hover {
   cursor: pointer;
@@ -176,4 +211,8 @@ input[type="radio"]:checked + span {
   color: var(--Very-Dark-Grayish-Blue);
   font-size: inherit;
   text-align: center;
+}
+
+.hidden {
+  display: none;
 }
