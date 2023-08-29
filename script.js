@@ -13,6 +13,7 @@ const deletecompletedTodosButton = document.querySelector(".clear-completed");
 let itemNbr = 0;
 let todosAllArray = [];
 
+//  Callback functions
 const increaseItemsNbr = function () {
   itemNbr += 1;
   itemNumber.textContent = itemNbr;
@@ -90,16 +91,6 @@ const todoCompleted = function (e) {
   }
 };
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-  addNewTodo();
-});
-
-parentTodo.addEventListener("click", function (e) {
-  removeTodo(e);
-  todoCompleted(e);
-});
-
 const showAllTodos = function () {
   todosAllArray.forEach((el) => {
     el.classList.remove("hidden");
@@ -112,7 +103,7 @@ const hideTodos = function (array) {
   });
 };
 
-controlTodo.addEventListener("click", function (e) {
+const changeStateTodo = function (e) {
   let todosActiveArray = todosAllArray.filter(
     (el) => !el.querySelector("#btn-check").checked
   );
@@ -136,4 +127,19 @@ controlTodo.addEventListener("click", function (e) {
       el.remove();
     });
   }
+};
+
+//    Events Listeners
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  addNewTodo();
+});
+
+parentTodo.addEventListener("click", function (e) {
+  removeTodo(e);
+  todoCompleted(e);
+});
+
+controlTodo.addEventListener("click", function (e) {
+  changeStateTodo(e);
 });
