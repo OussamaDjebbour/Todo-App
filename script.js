@@ -3,31 +3,46 @@
 const form = document.querySelector("form");
 const input = document.querySelector("#text");
 const parentTodo = document.querySelector(".parent-todo");
-const itemNumber = document.querySelector("#item-number");
-const controlTodo = document.querySelector(".control-todo-container");
+// const itemNumber = document.querySelector("#item-number");
+const itemNumber = document.querySelectorAll("#item-number");
+// const controlTodo = document.querySelector(".control-todo-container");
+const controlTodo = document.querySelectorAll(".control-todo-container");
 const allTodosButton = document.querySelector("#all");
 const activeTodosButton = document.querySelector("#active");
 const completedTodosButton = document.querySelector("#completed");
-const deletecompletedTodosButton = document.querySelector(".clear-completed");
+// const deletecompletedTodosButton = document.querySelector(".clear-completed");
+
+// itemNumber.forEach((item) => {
+//   if (
+//     window.getComputedStyle(item.closest(".control-todo-container")).display !==
+//     "none"
+//   ) {
+//     // Do something..
+//     console.log(item);
+//   }
+// });
 
 let itemNbr = 0;
 let todosAllArray = [];
 
 //  Callback functions
+const displayItemNbrs = function () {
+  itemNumber.forEach((item) => (item.textContent = itemNbr));
+};
+
 const increaseItemsNbr = function () {
   itemNbr += 1;
-  itemNumber.textContent = itemNbr;
+  displayItemNbrs();
 };
 
 const dereaseItemsNbr = function () {
   itemNbr -= 1;
-  itemNumber.textContent = itemNbr;
+  displayItemNbrs();
 };
-
 const addNewTodo = function () {
   const inputValue = input.value;
   const html = ` 
-          <div class="container-todo">
+          <div class="container-todo ">
               <div>
                 <label >
                 <input type="checkbox" name="btn-check" id="btn-check"  />
@@ -60,7 +75,11 @@ const removeTodo = function (e) {
   if (!(targetCross === cross)) return;
 
   targetCross.closest(".container-todo").remove();
-  dereaseItemsNbr();
+  if (
+    !targetCross.closest(".container-todo").querySelector("#btn-check").checked
+  ) {
+    dereaseItemsNbr();
+  }
 };
 
 const changeTextDecorAndColor = function (target, decor, color) {
@@ -104,6 +123,10 @@ const hideTodos = function (array) {
 };
 
 const changeStateTodo = function (e) {
+  const deletecompletedTodosButton = e.target
+    .closest(".control-todo-container")
+    .querySelector(".clear-completed");
+
   let todosActiveArray = todosAllArray.filter(
     (el) => !el.querySelector("#btn-check").checked
   );
@@ -140,6 +163,8 @@ parentTodo.addEventListener("click", function (e) {
   todoCompleted(e);
 });
 
-controlTodo.addEventListener("click", function (e) {
-  changeStateTodo(e);
+controlTodo.forEach((el) => {
+  el.addEventListener("click", function (e) {
+    changeStateTodo(e);
+  });
 });
